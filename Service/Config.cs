@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Service
 {
-    public class UnitTest1
+    public class Config
     {
         [Fact]
         public void Test1()
