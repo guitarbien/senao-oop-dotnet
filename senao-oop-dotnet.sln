@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "senao_oop_dotnet", "senao-o
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTest", "ServiceTest\ServiceTest.csproj", "{ECC0DBE2-056B-4553-90DA-3875A45D851E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{B4B3D3D5-A02D-4763-85B8-D0388F86C2B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ECC0DBE2-056B-4553-90DA-3875A45D851E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC0DBE2-056B-4553-90DA-3875A45D851E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC0DBE2-056B-4553-90DA-3875A45D851E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B3D3D5-A02D-4763-85B8-D0388F86C2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B3D3D5-A02D-4763-85B8-D0388F86C2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B3D3D5-A02D-4763-85B8-D0388F86C2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B3D3D5-A02D-4763-85B8-D0388F86C2B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
