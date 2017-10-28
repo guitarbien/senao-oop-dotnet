@@ -12,7 +12,7 @@ namespace ServiceTest
             configManager.ProcessConfig();
 
             Assert.IsType<Config>(configManager[0]);
-            Assert.Equal(configManager.Count, 1);
+            Assert.Equal(configManager.Count, 3);
         }
     }
 }

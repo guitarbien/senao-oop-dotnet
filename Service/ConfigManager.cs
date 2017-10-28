@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Service
 {
@@ -11,19 +14,25 @@ namespace Service
 
         public int Count => _configs.Count;
 
+        // Config.json file path
+        const string ConcigJsonPath = @"/Users/bien/Documents/Codes/senao_oop_laravel/storage/app/config.json";
+
         public void ProcessConfig()
         {
-            _configs.Add(new Config(
-                "ext",
-                "location",
-                true,
-                "unit",
-                false,
-                "handler",
-                "destination",
-                "dir",
-                "connectionString"
-            ));
+            string json = readJsonConfig();
+
+            JObject jsonObjects = JObject.Parse(json);
+            List<JToken> allConfigs = jsonObjects["configs"].Children().ToList();
+
+            foreach (JToken eachConfig in allConfigs)
+            {
+                _configs.Add(eachConfig.ToObject<Config>());
+            }
+        }
+
+        private string readJsonConfig()
+        {
+            return File.ReadAllText(ConcigJsonPath);
         }
     }
 }
