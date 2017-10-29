@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
@@ -15,7 +14,7 @@ namespace Service
         public int Count => _schedule.Count;
 
         // Config.json file path
-        const string ConcigJsonPath = @"/Users/bien/Documents/Codes/senao_oop_laravel/storage/app/schedule.json";
+        protected override string ConcigJsonPath => @"/Users/bien/Documents/Codes/senao_oop_laravel/storage/app/schedule.json";
 
         public override void ProcessConfig()
         {
@@ -28,11 +27,6 @@ namespace Service
             {
                 _schedule.Add(eachSchedule.ToObject<Schedule>());
             }
-        }
-
-        private string ReadJsonConfig()
-        {
-            return File.ReadAllText(ConcigJsonPath);
         }
     }
 }

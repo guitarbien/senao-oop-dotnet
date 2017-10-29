@@ -15,7 +15,7 @@ namespace Service
 
         // Config.json file path
         // todo 如何用 env 切換檔案位置 ? 測試如何 mock 掉此常數
-        const string ConcigJsonPath = @"/Users/bien/Documents/Codes/senao_oop_laravel/storage/app/config.json";
+        protected override string ConcigJsonPath => @"/Users/bien/Documents/Codes/senao_oop_laravel/storage/app/config.json";
 
         public override void ProcessConfig()
         {
@@ -27,11 +27,6 @@ namespace Service
             {
                 _configs.Add(eachConfig);
             }
-        }
-
-        private string ReadJsonConfig()
-        {
-            return File.ReadAllText(ConcigJsonPath);
         }
     }
 }
