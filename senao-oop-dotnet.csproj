@@ -1,8 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Compile Remove="Service\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Service\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Service\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ServiceTest\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="ServiceTest\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ServiceTest\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Service\Service.csproj" />
+  </ItemGroup>
 </Project>
