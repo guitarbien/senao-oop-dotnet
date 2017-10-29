@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Service
 {
@@ -15,18 +14,18 @@ namespace Service
         public int Count => _configs.Count;
 
         // Config.json file path
+        // todo 如何用 env 切換檔案位置 ? 測試如何 mock 掉此常數
         const string ConcigJsonPath = @"/Users/bien/Documents/Codes/senao_oop_laravel/storage/app/config.json";
 
         public void ProcessConfig()
         {
             string json = readJsonConfig();
 
-            JObject jsonObjects = JObject.Parse(json);
-            List<JToken> allConfigs = jsonObjects["configs"].Children().ToList();
-
-            foreach (JToken eachConfig in allConfigs)
+            // todo deserialize 後型態為 List<Config>，如何 mapping 到 constructor parameters ???
+            Dictionary<string, List<Config>> jsonObjects = JsonConvert.DeserializeObject<Dictionary<string, List<Config>>>(json);
+            foreach (Config eachConfig in jsonObjects["configs"])
             {
-                _configs.Add(eachConfig.ToObject<Config>());
+                _configs.Add(eachConfig);
             }
         }
 
