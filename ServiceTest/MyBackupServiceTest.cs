@@ -9,10 +9,7 @@ namespace ServiceTest
         [Fact]
         public void 模擬使用端操作()
         {
-            ConfigManager configManager = new ConfigManager();
-            ScheduleManager scheduleManager = new ScheduleManager();
-
-            MyBackupService myBackupService = new MyBackupService(configManager, scheduleManager);
+            MyBackupService myBackupService = new MyBackupService();
             myBackupService.ProcessConfig();
             // myBackupService.DoBackup();
         }

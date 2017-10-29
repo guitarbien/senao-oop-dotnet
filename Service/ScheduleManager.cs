@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Service
 {
-    public class ScheduleManager
+    public class ScheduleManager : JsonManager
     {
         private readonly List<Schedule> _schedule = new List<Schedule>();
 
@@ -17,9 +17,9 @@ namespace Service
         // Config.json file path
         const string ConcigJsonPath = @"/Users/bien/Documents/Codes/senao_oop_laravel/storage/app/schedule.json";
 
-        public void ProcessConfig()
+        public override void ProcessConfig()
         {
-            string json = readJsonConfig();
+            string json = ReadJsonConfig();
 
             JObject jsonObjects = JObject.Parse(json);
             List<JToken> allSchedules = jsonObjects["schedules"].Children().ToList();
@@ -30,7 +30,7 @@ namespace Service
             }
         }
 
-        private string readJsonConfig()
+        private string ReadJsonConfig()
         {
             return File.ReadAllText(ConcigJsonPath);
         }

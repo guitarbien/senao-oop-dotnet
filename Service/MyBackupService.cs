@@ -1,28 +1,23 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Service
 {
     public class MyBackupService
     {
-        private readonly ConfigManager configManager;
+        private readonly List<JsonManager> managers = new List<JsonManager>();
 
-        private readonly ScheduleManager scheduleManager;
-
-        public MyBackupService(ConfigManager configManager, ScheduleManager scheduleManager)
+        public MyBackupService()
         {
-            this.configManager = configManager ?? throw new ArgumentNullException(nameof(configManager));
-            this.scheduleManager = scheduleManager ?? throw new ArgumentNullException(nameof(scheduleManager));
+            managers.Add(new ConfigManager());
+            managers.Add(new ScheduleManager());
         }
 
         public void ProcessConfig()
         {
-            configManager.ProcessConfig();
-            scheduleManager.ProcessConfig();
-        }
-
-        public void ConfigService()
-        {
-
+            foreach (JsonManager manager in managers)
+            {
+                manager.ProcessConfig();
+            }
         }
     }
 }
