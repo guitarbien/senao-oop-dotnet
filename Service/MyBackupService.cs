@@ -4,17 +4,17 @@ namespace Service
 {
     public class MyBackupService
     {
-        private readonly List<JsonManager> managers = new List<JsonManager>();
+        private readonly List<JsonManager> _managers = new List<JsonManager>();
 
         public MyBackupService()
         {
-            managers.Add(new ConfigManager());
-            managers.Add(new ScheduleManager());
+            _managers.Add(new ConfigManager());
+            _managers.Add(new ScheduleManager());
         }
 
         public void ProcessConfig()
         {
-            foreach (JsonManager manager in managers)
+            foreach (var manager in _managers)
             {
                 manager.ProcessConfig();
             }

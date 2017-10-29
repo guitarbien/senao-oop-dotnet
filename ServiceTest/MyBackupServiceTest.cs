@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Design;
-using Xunit;
+﻿using Xunit;
 using Service;
 
 namespace ServiceTest
