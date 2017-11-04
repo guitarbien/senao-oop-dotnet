@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Xunit;
 using Service;
 
@@ -8,13 +9,16 @@ namespace ServiceTest
         [Fact]
         public void Config要有基本屬性()
         {
+            List<string> handlers = new List<string>();
+            handlers.Add("zip");
+
             Config config = new Config(
                 "ext",
                 "location",
                 true,
                 "unit",
                 false,
-                "handler",
+                handlers,
                 "destination",
                 "dir",
                 "connectionString"
@@ -25,7 +29,7 @@ namespace ServiceTest
             Assert.True(config.SubDirectory);
             Assert.Equal("unit", config.Unit);
             Assert.False(config.Remove);
-            Assert.Equal("handler", config.Handler);
+            Assert.Equal("zip", config.Handlers[0]);
             Assert.Equal("destination", config.Destination);
             Assert.Equal("dir", config.Dir);
             Assert.Equal("connectionString", config.ConnectionString);
