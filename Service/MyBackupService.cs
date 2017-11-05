@@ -77,14 +77,14 @@ namespace Service
         {
             List<IHandler> handlers = new List<IHandler>();
 
-            handlers.Add(HandlerFactory.create("file"));
+            handlers.Add(HandlerFactory.Create("file"));
 
             foreach (string handler in candidate.GetConfig.Handlers)
             {
-                handlers.Add(HandlerFactory.create(handler));
+                handlers.Add(HandlerFactory.Create(handler));
             }
 
-            handlers.Add(HandlerFactory.create(candidate.GetConfig.Destination));
+            handlers.Add(HandlerFactory.Create(candidate.GetConfig.Destination));
 
             return handlers;
         }
