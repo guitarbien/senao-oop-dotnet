@@ -7,16 +7,23 @@ namespace Service.Handler
     {
         public override byte[] Perform(Candidate candidate, byte[] target)
         {
-            byte[] result = base.Perform(candidate, target);
+            byte[] result = target;
 
-            MemoryStream output = new MemoryStream();
+            base.Perform(candidate, target);
 
-            using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
+            if (target != null)
             {
-                dstream.Write(result, 0, result.Length);
+                MemoryStream output = new MemoryStream();
+
+                using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
+                {
+                    dstream.Write(result, 0, result.Length);
+                }
+
+                return output.ToArray();
             }
 
-            return output.ToArray();
+            return result;
         }
     }
 }
