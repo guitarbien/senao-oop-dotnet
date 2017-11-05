@@ -35,7 +35,29 @@ namespace Service
         {
             List<Candidate> fakeCandidates = new List<Candidate>();
 
-            fakeCandidates.Add(new Candidate());
+            List<string> handlers = new List<string>();
+            handlers.Add("file");
+            handlers.Add("encode");
+
+            fakeCandidates.Add(
+                new Candidate(
+                    new Config(
+                        "cs",
+                        "/Users/bien/Documents/Codes/senao-oop-dotnet/Service",
+                        false,
+                        "unit",
+                        false,
+                        handlers,
+                        "directory",
+                        "/Users/bien/Desktop",
+                        ""
+                    ),
+                    "xxx.cs",
+                    "2017-01-01 00:05:06",
+                    "someProcess",
+                    1024
+                )
+            );
 
             return fakeCandidates;
         }
@@ -57,12 +79,12 @@ namespace Service
 
             handlers.Add(HandlerFactory.create("file"));
 
-            foreach (string handler in candidate.config.handlers)
+            foreach (string handler in candidate.GetConfig.Handlers)
             {
                 handlers.Add(HandlerFactory.create(handler));
             }
 
-            handlers.Add(HandlerFactory.create(candidate.config.Destination));
+            handlers.Add(HandlerFactory.create(candidate.GetConfig.Destination));
 
             return handlers;
         }
