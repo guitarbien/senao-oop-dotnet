@@ -69,7 +69,7 @@ namespace Service
             byte[] target = null;
             foreach (IHandler handler in handlers)
             {
-                target = handler.perform(candidate, target);
+                target = handler.Perform(candidate, target);
             }
         }
 
@@ -79,12 +79,12 @@ namespace Service
 
             handlers.Add(HandlerFactory.Create("file"));
 
-            foreach (string handler in candidate.GetConfig.Handlers)
+            foreach (string handler in candidate.Config.Handlers)
             {
                 handlers.Add(HandlerFactory.Create(handler));
             }
 
-            handlers.Add(HandlerFactory.Create(candidate.GetConfig.Destination));
+            handlers.Add(HandlerFactory.Create(candidate.Config.Destination));
 
             return handlers;
         }

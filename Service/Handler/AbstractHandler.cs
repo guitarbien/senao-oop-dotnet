@@ -2,8 +2,7 @@
 {
     public abstract class AbstractHandler : IHandler
     {
-
-        public virtual byte[] perform(Candidate candidate, byte[] target)
+        public virtual byte[] Perform(Candidate candidate, byte[] target)
         {
             return target;
         }

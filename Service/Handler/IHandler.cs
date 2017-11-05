@@ -2,6 +2,6 @@
 {
     public interface IHandler
     {
-        byte[] perform(Candidate candidate, byte[] target);
+        byte[] Perform(Candidate candidate, byte[] target);
     }
 }

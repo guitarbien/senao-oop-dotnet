@@ -5,7 +5,7 @@ namespace Service
     public class Candidate
     {
         // 所根據的 Config 物件，由 constructor 傳入
-        public Config GetConfig { get; }
+        public Config Config { get; }
 
         // 檔案的日期與時間
         public string FileDateTime { get; }
@@ -21,7 +21,7 @@ namespace Service
 
         public Candidate(Config getConfig, string fileDateTime, string name, string processName, int size)
         {
-            GetConfig = getConfig ?? throw new ArgumentNullException(nameof(getConfig));
+            Config = getConfig ?? throw new ArgumentNullException(nameof(getConfig));
             FileDateTime = fileDateTime ?? throw new ArgumentNullException(nameof(fileDateTime));
             Name = name ?? throw new ArgumentNullException(nameof(name));
             ProcessName = processName ?? throw new ArgumentNullException(nameof(processName));
