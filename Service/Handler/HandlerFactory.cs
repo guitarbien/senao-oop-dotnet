@@ -1,30 +1,24 @@
-﻿namespace Service.Handler
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+
+namespace Service.Handler
 {
     public static class HandlerFactory
     {
+        private static readonly Dictionary<string, string> HandlerDictionary;
+
+        static HandlerFactory()
+        {
+            string jsonString = File.ReadAllText("handler_mapping.json");
+            HandlerDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
+        }
+
         public static IHandler Create(string handlerType)
         {
-            if (handlerType == "file")
-            {
-                return new FileHandler();
-            }
-
-            if (handlerType == "zip")
-            {
-                return new FileHandler();
-            }
-
-            if (handlerType == "encode")
-            {
-                return new FileHandler();
-            }
-
-            if (handlerType == "directory")
-            {
-                return new FileHandler();
-            }
-
-            return new FileHandler();
+            return (IHandler) Activator.CreateInstance(
+                Type.GetType("senao-oop-dotnet.Handler." + HandlerDictionary[handlerType]));
         }
     }
 }
