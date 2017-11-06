@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Service
 {
@@ -23,7 +24,7 @@ namespace Service
         public bool Remove { get; }
 
         /// 處理方式 zip:壓縮 / encode:加密
-        public string Handler { get; }
+        public List<string> Handlers { get; }
 
         /// 處理後要儲存到什麼地方 directory:目錄 / db資料庫
         public string Destination { get; }
@@ -34,7 +35,7 @@ namespace Service
         /// 資料庫連接字串
         public string ConnectionString { get; }
 
-        public Config(string ext, string location, bool subDirectory, string unit, bool remove, string handler,
+        public Config(string ext, string location, bool subDirectory, string unit, bool remove, List<string> handlers,
             string destination, string dir, string connectionString)
         {
             Ext = ext ?? throw new ArgumentNullException(nameof(ext));
@@ -42,7 +43,7 @@ namespace Service
             SubDirectory = subDirectory;
             Unit = unit ?? throw new ArgumentNullException(nameof(unit));
             Remove = remove;
-            Handler = handler ?? throw new ArgumentNullException(nameof(handler));
+            Handlers = handlers ?? throw new ArgumentNullException(nameof(handlers));
             Destination = destination ?? throw new ArgumentNullException(nameof(destination));
             Dir = dir ?? throw new ArgumentNullException(nameof(dir));
             ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));

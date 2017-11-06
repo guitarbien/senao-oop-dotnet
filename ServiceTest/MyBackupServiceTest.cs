@@ -10,7 +10,7 @@ namespace ServiceTest
         {
             MyBackupService myBackupService = new MyBackupService();
             myBackupService.ProcessConfig();
-            // myBackupService.DoBackup();
+            myBackupService.DoBackup();
         }
     }
 }
