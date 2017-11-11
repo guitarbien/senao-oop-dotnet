@@ -23,43 +23,30 @@ namespace Service
 
         public void DoBackup()
         {
-            List<Candidate> candidates = FindFiles();
+            ConfigManager configManager = GetConfigManager();
 
-            foreach (Candidate candidate in candidates)
+            for (int i = 0; i <= configManager.Count; i++)
             {
-                BroadcastToHandlers(candidate);
+                IFileFinder fileFinder = FileFinderFactory.Create("file", configManager[i]);
+
+                foreach (Candidate candidate in fileFinder)
+                {
+                    BroadcastToHandlers(candidate);
+                }
             }
         }
 
-        private List<Candidate> FindFiles()
+        private ConfigManager GetConfigManager()
         {
-            List<Candidate> fakeCandidates = new List<Candidate>();
+            foreach (JsonManager manager in _managers)
+            {
+                if (manager.GetType() == typeof(ConfigManager))
+                {
+                    return (ConfigManager) manager;
+                }
+            }
 
-            List<string> handlers = new List<string>();
-            handlers.Add("file");
-            handlers.Add("encode");
-
-            fakeCandidates.Add(
-                new Candidate(
-                    new Config(
-                        "cs",
-                        "/Users/bien/Documents/Codes/senao-oop-dotnet/Service",
-                        false,
-                        "unit",
-                        false,
-                        handlers,
-                        "directory",
-                        "/Users/bien/Desktop",
-                        ""
-                    ),
-                    "xxx.cs",
-                    "2017-01-01 00:05:06",
-                    "someProcess",
-                    1024
-                )
-            );
-
-            return fakeCandidates;
+            return null;
         }
 
         private void BroadcastToHandlers(Candidate candidate)
