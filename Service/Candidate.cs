@@ -5,27 +5,33 @@ namespace Service
     public class Candidate
     {
         // 所根據的 Config 物件，由 constructor 傳入
-        public Config Config { get; }
+        private readonly Config _config;
 
         // 檔案的日期與時間
-        public string FileDateTime { get; }
+        private readonly string _fileDateTime;
 
         // 檔案名稱
-        public string Name { get; }
+        private readonly string _name;
 
         // 處理檔案的 process
-        public string ProcessName { get; }
+        private readonly string _processName;
 
         // 檔案 size
-        public int Size { get; }
+        private readonly int _size;
 
-        public Candidate(Config getConfig, string fileDateTime, string name, string processName, int size)
+        public Config Config => _config;
+        public string FileDateTime => _fileDateTime;
+        public string Name => _name;
+        public string ProcessName => _processName;
+        public int Size => _size;
+
+        public Candidate(Config config, string fileDateTime, string name, string processName, int size)
         {
-            Config = getConfig ?? throw new ArgumentNullException(nameof(getConfig));
-            FileDateTime = fileDateTime ?? throw new ArgumentNullException(nameof(fileDateTime));
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            ProcessName = processName ?? throw new ArgumentNullException(nameof(processName));
-            Size = size;
+            _config = config ?? throw new ArgumentNullException(nameof(config));
+            _fileDateTime = fileDateTime ?? throw new ArgumentNullException(nameof(fileDateTime));
+            _name = name ?? throw new ArgumentNullException(nameof(name));
+            _processName = processName ?? throw new ArgumentNullException(nameof(processName));
+            _size = size;
         }
     }
 }
