@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using MyBackupCandidate;
-using Service.Handler;
 
 namespace Service
 {

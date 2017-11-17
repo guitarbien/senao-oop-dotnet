@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using MyBackupCandidate;
+﻿using MyBackupCandidate;
 
 namespace Service.Handler
 {
