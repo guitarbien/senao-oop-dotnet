@@ -26,7 +26,7 @@ namespace MyBackupCandidate
         public string ProcessName => _processName;
         public long Size => _size;
 
-        public Candidate(Config config, DateTime fileDateTime, string name, string processName, long size)
+        internal Candidate(Config config, DateTime fileDateTime, string name, string processName, long size)
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
             _fileDateTime = fileDateTime;
