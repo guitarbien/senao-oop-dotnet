@@ -17,15 +17,15 @@ namespace Service
         private readonly string _processName;
 
         // 檔案 size
-        private readonly int _size;
+        private readonly long _size;
 
         public Config Config => _config;
         public string FileDateTime => _fileDateTime;
         public string Name => _name;
         public string ProcessName => _processName;
-        public int Size => _size;
+        public long Size => _size;
 
-        public Candidate(Config config, string fileDateTime, string name, string processName, int size)
+        public Candidate(Config config, string fileDateTime, string name, string processName, long size)
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
             _fileDateTime = fileDateTime ?? throw new ArgumentNullException(nameof(fileDateTime));
