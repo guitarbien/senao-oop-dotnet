@@ -1,6 +1,7 @@
 ﻿using System;
+using Service;
 
-namespace Service
+namespace MyBackupCandidate
 {
     public class Candidate
     {
