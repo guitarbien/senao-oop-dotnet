@@ -1,4 +1,6 @@
-﻿namespace Service.Handler
+﻿using MyBackupCandidate;
+
+namespace Service.Handler
 {
     public interface IHandler
     {

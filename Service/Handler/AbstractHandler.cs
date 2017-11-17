@@ -1,4 +1,6 @@
-﻿namespace Service.Handler
+﻿using MyBackupCandidate;
+
+namespace Service.Handler
 {
     public abstract class AbstractHandler : IHandler
     {

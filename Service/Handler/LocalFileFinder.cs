@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using MyBackupCandidate;
 
 namespace Service.Handler
 {
@@ -35,7 +36,10 @@ namespace Service.Handler
 
         protected override Candidate CreateCandidate(string filename)
         {
-            throw new System.NotImplementedException();
+            if (!File.Exists(filename)) return null;
+
+            var fileInfo = new FileInfo(filename);
+            return CandidateFactory.Create(Config, filename, fileInfo.CreationTime, fileInfo.Length);
         }
     }
 }
